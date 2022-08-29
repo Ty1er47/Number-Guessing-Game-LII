@@ -5,14 +5,17 @@ using UnityEngine;
 public class NumberGuessingGame : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    
+    // Start is called before the first frame update
+    
+     void Start()
     {
-        {
+      StartGame();
+    }
+
     private int guess = 5;
     private int minValue = 1;
     private int maxValue = 10;
-    
-    // Start is called before the first frame update
     void Start()
     {
     StartGame();
