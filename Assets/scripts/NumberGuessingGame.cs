@@ -1,56 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class NumberGuessingGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    
-    // Start is called before the first frame update
-    
+    [SerializeField]private int max;
+    [SerializeField]private int min;
+    private TextMeshProUGUI guessText;
+
+   [SerializeField]private int guess;
      void Start()
     {
       StartGame();
     }
-
-    private int guess = 5;
-    private int minValue = 1;
-    private int maxValue = 10;
-    void Start()
+    void StartGame()
     {
-    StartGame();
+       NextGuess();
     }
 
-    // Update is called once per frame
-    void Update()
+     public void OnPressHigher()
     {
-       if(Input.GetKeyDown(KeyCode.UpArrow))
-       {
-         minValue = guess;
-         guess = (maxValue + minValue) / 2;
-         Debug.Log("Is it higher or lower than: " + guess);
-       } 
-       if(Input.GetKeyDown(KeyCode.DownArrow))
-       {
-           maxValue = guess;
-           guess = (maxValue + minValue) /2;
-           Debug.Log("Is it higher or lower than: " + guess);
+      min = guess + 1;
+       NextGuess();
         }
-          if(Input.GetKeyDown(KeyCode.Return)) 
-        {
-          Debug.Log("I guessed your number,I'm a genius!!");
-          Debug.Log("");
-          StartGame();
-        }
+        public void OnPressLower()
+    {
+               max = guess -1;
+              NextGuess();
     }
 
-     void StartGame () 
+  
+    void NextGuess()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+       guess = Random.Range (min, max + 1);
+       guessText.text = guess.ToString();
     }
 }
