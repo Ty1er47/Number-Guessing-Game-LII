@@ -6,9 +6,11 @@ public class NumberGuessingGame : MonoBehaviour
 {
     [SerializeField]private int max;
     [SerializeField]private int min;
-    private TextMeshProUGUI guessText;
+    [SerializeField]private TextMeshProUGUI guessText;
 
-   [SerializeField]private int guess;
+    private int guess;
+
+   //[SerializeField]private int guess;
      void Start()
     {
       StartGame();
@@ -18,19 +20,19 @@ public class NumberGuessingGame : MonoBehaviour
        NextGuess();
     }
 
-     public void OnPressHigher()
+    public void OnPressHigher()
     {
       min = guess + 1;
        NextGuess();
-        }
-        public void OnPressLower()
+    }
+    public void OnPressLower()
     {
-               max = guess -1;
-              NextGuess();
+       max = guess -1;
+       NextGuess();
     }
 
   
-    void NextGuess()
+    public void NextGuess()
     {
        guess = Random.Range (min, max + 1);
        guessText.text = guess.ToString();
